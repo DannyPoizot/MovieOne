@@ -1,0 +1,23 @@
+<h2>Nos films</h2>
+
+<div class="search">
+  <input type="search" #searchInput (keyup)="search(searchInput.value)" placeholder="Rechercher...">
+</div>
+{{ searchInput.value }}
+
+<div class="movies">
+    <div class="movie"
+        *ngFor="let movie of movies"
+        [routerLink]="'/film/' + movie.id">
+        <img [src]="movie.picture" alt="Affiche du film">
+
+        <h3>
+            <span class="badge" *ngIf="movie.rate >= 4">Top</span>
+            {{ movie.title }}
+        </h3>
+    </div>
+</div>
+
+<p *ngIf="movies.length == 0">
+    Aucun film disponible
+</p>
